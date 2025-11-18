@@ -1,6 +1,6 @@
-import { Button } from '@/components/ui/button';
-import { ArrowRight, CreditCard, Database } from 'lucide-react';
-import { Terminal } from './terminal';
+import { Button } from "@/components/ui/button";
+import { ArrowRight, CreditCard, Database } from "lucide-react";
+import { Terminal } from "./terminal";
 
 export default function HomePage() {
   return (
@@ -127,4 +127,6 @@ export default function HomePage() {
       </section>
     </main>
   );
+
+  // contributor: DanielNiels (github.com/danie-bss)
 }
