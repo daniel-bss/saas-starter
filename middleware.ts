@@ -4,7 +4,8 @@ import { signToken, verifyToken } from "@/lib/auth/session";
 
 const protectedRoutes = "/dashboard";
 
-export default async function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
+  console.log("amsook");
   const { pathname } = request.nextUrl;
   const sessionCookie = request.cookies.get("session");
   const isProtectedRoute = pathname.startsWith(protectedRoutes);
