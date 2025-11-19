@@ -5,18 +5,13 @@
   --color-primary-100: #0b0e1a;
   --color-primary-200: #060a1b;
 
-  --color-surface-50: #ffffff;
-  --color-surface-100: #e5e7eb;
-  --color-surface-200: #9ca3af;
-  --color-surface-300: #a5b4ff;
-  --color-surface-400: #000000;
+  --color-surface-50: #e5e7eb;
+  --color-surface-100: #9da2ae;
+  --color-surface-200: #5e6a7f;
 
-  --color-danger-50: #fecaca;
-  --color-danger-100: #b8565b;
-  --color-danger-200: #fb4f4f;
-  --color-danger-300: #b70404;
-  --color-danger-400: #910303;
-  --color-danger-500: #241827;
+  --color-danger-50: #fec9c9;
+  --color-danger-100: #b8575c;
+  --color-danger-200: #261a28;
 
   --color-success-50: #dffaf2;
   --color-success-100: #9ef1d8;
@@ -29,4 +24,8 @@
   --color-warning-200: #f2ab53;
   --color-warning-300: #ee9322;
   --color-warning-400: #c7760f;
+}
+
+.gate-overlay {
+  background: radial-gradient(circle at top, #111827 0, #020617 55%, #000 100%);
 }
