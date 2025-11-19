@@ -1,3 +1,9 @@
+import { Button } from "@/components/ui/button";
+
 export default function Page() {
-  return <div className="bg-hehex">ok</div>;
+  return (
+    <div>
+      <Button>Click me</Button>
+    </div>
+  );
 }
