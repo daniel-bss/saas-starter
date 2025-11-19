@@ -1,32 +1,21 @@
-export default function GateOverlay() {
-  let choices: {
-    tag: string;
-  }[] = [
-    {
-      tag: "HAV",
-    },
-    {
-      tag: "ETF",
-    },
-    {
-      tag: "SNK",
-    },
-    {
-      tag: "JST",
-    },
-    {
-      tag: "300",
-    },
-    {
-      tag: "000",
-    },
-    {
-      tag: "NLO",
-    },
-    {
-      tag: "GUEST",
-    },
-  ];
+import { useRouter } from "next/navigation";
+import { choices } from "@/contents/home";
+import Endpoint from "@/lib/endpoints";
+
+export default function GateOverlay({
+  firstLanding,
+  setFirstLanding,
+}: {
+  firstLanding: boolean;
+  setFirstLanding: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
+  const router = useRouter();
+  let onClickTag = (tag: string) => () => {
+    if (tag === "ETF") {
+      router.push(Endpoint.topSecret);
+    }
+    setFirstLanding(true);
+  };
 
   return (
     <div className="gate-overlay absolute inset-0 flex justify-center items-center">
@@ -57,15 +46,13 @@ export default function GateOverlay() {
         <div className="text-surface-100 text-sm pt-4 pb-3">
           Choose your alliance to enter 2128:
         </div>
-        <div className="flex justify-center items-end gap-2 h-[46px]">
+        <div className="flex justify-center items-end gap-2 h-[46px] mb-9">
           {choices.map((c, idx) => {
             return (
               <div
                 key={`${c}${idx}`}
                 className="text-surface-100 border border-surface-200 px-3.5 py-2 rounded-full hover:cursor-pointer hover:mb-0.5"
-                onClick={() => {
-                  console.log("HAHA");
-                }}
+                onClick={onClickTag(c.tag)}
               >
                 {c.tag}
               </div>
