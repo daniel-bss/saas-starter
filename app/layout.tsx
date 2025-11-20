@@ -3,6 +3,7 @@ import "./globals.css";
 import type { Metadata, Viewport } from "next";
 // import { getUser, getTeamForUser } from '@/lib/db/queries';
 import { SWRConfig } from "swr";
+import Navbar from "@/components/navbar";
 
 export const metadata: Metadata = {
   title: "abc",
@@ -19,8 +20,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.className}`}>
-      <body className="min-h-[100dvh]">
+    <html lang="en" className={`${inter.className} bg-primary`}>
+      <body className="min-h-[100dvh] body-main-background">
         <SWRConfig
           value={{
             fallback: {
@@ -31,6 +32,7 @@ export default function RootLayout({
             },
           }}
         >
+          <Navbar />
           {children}
         </SWRConfig>
       </body>

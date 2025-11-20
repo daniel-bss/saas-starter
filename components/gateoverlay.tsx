@@ -9,10 +9,11 @@ export default function GateOverlay({
   firstLanding: boolean;
   setFirstLanding: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
-  const router = useRouter();
+  // const router = useRouter();
   let onClickTag = (tag: string) => () => {
     if (tag === "ETF") {
-      router.push(Endpoint.topSecret);
+      // router.push(Endpoint.topSecret);
+      // TODO: TOP SECRET FOR ETF
     }
     setFirstLanding(true);
   };
@@ -21,8 +22,8 @@ export default function GateOverlay({
     <div className="gate-overlay absolute inset-0 flex justify-center items-center">
       <div className="bg-[#0e1629] flex flex-col justify-center items-center px-[22px] py-6 w-[642px] border border-[#333b4c] rounded-[18px]">
         {/* Upper content */}
-        <h1 className="text-surface-50 text-lg font-bold my-4">
-          Enter State 2128
+        <h1 className="text-surface-50 text-lg font-bold my-4 tracking-widest">
+          ENTER STATE 2128
         </h1>
         <div className="text-surface-50 text-sm">
           This site chronicles the unauthorized legends, scandals, and blizzards
@@ -51,7 +52,7 @@ export default function GateOverlay({
             return (
               <div
                 key={`${c}${idx}`}
-                className="text-surface-100 border border-surface-200 px-3.5 py-2 rounded-full hover:cursor-pointer hover:mb-0.5"
+                className="text-surface-100 border border-surface-200 px-3.5 py-2 rounded-full hover:cursor-pointer hover:mb-0.5 hover:text-gray-300 hover:border-gray-400"
                 onClick={onClickTag(c.tag)}
               >
                 {c.tag}

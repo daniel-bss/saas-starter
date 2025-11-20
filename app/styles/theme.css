@@ -1,10 +1,11 @@
 @theme inline {
-  --color-primary: #10131e;
-  --color-secondary: #0e1729;
-
+  --color-primary: #0b1030;
   --color-primary-100: #0b0e1a;
   --color-primary-200: #060a1b;
 
+  --color-secondary: #b9c3ff;
+
+  --color-surface-25: #f2f3f4;
   --color-surface-50: #e5e7eb;
   --color-surface-100: #9da2ae;
   --color-surface-200: #5e6a7f;
@@ -28,4 +29,29 @@
 
 .gate-overlay {
   background: radial-gradient(circle at top, #111827 0, #020617 55%, #000 100%);
+}
+
+.container {
+  @apply max-w-[1000px] my-0 mx-auto;
+}
+
+.body-main-background {
+  background: radial-gradient(
+    1100px 560px at 50% -10%,
+    #0b1030 0%,
+    #1a2147 42%,
+    #060915 100%
+  );
+}
+
+.card {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.02),
+    rgba(0, 0, 0, 0.04)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 16px;
+  margin-top: 16px;
 }
