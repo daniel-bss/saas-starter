@@ -50,7 +50,7 @@
     rgba(255, 255, 255, 0.02),
     rgba(0, 0, 0, 0.04)
   );
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid #ffffff14;
   border-radius: 14px;
   padding: 16px;
   margin-top: 16px;
@@ -60,4 +60,12 @@
   @apply rounded-lg w-8 h-9 border-gray-50 flex justify-center items-center hover:bg-black opacity-80 hover:cursor-pointer;
   border: 1px solid rgba(255, 255, 255, 0.15);
   background: rgba(0, 0, 0, 0.5);
+}
+
+.news-body {
+  @apply text-surface-25 text-base/[26px] pr-2 h-[330px];
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-color: rgb(100, 100, 100) rgba(192, 192, 192, 0.08);
+  scrollbar-width: thin;
 }

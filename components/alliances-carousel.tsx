@@ -31,10 +31,13 @@ export default function AlliancesCarousel({
     >
       <CarouselContent>
         {items.map((item, i) => (
-          <CarouselItem key={i} className="basis-3/10 hover:cursor-pointer">
+          <CarouselItem
+            key={i}
+            className="basis-1/1 sm:basis-1/2 md:basis-3/10 hover:cursor-pointer"
+          >
             {/**TODO: basis RESPONSIVE */}
             <div className="bg-black p-4 mt-4 border-2 border-black rounded-[10px] relative text-secondary hover:text-surface-25">
-              <div className="bg-green-50 w-full min-h-[164px] h-full"></div>
+              <div className="bg-green-50 w-full min-w-[230px] min-h-[164px] h-full"></div>
               <div className="absolute bottom-0 left-0 right-0 text-center p-2 font-extrabold text-inherit">
                 {item.name}
               </div>

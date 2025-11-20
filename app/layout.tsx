@@ -21,7 +21,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.className} bg-primary`}>
-      <body className="min-h-[100dvh] body-main-background">
+      <body className="min-h-[100dvh] pb-[100px] body-main-background">
         <SWRConfig
           value={{
             fallback: {
