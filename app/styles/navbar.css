@@ -1,5 +1,5 @@
 .navbar {
-  @apply h-12 py-0.5 fixed w-full;
+  @apply h-12 py-0.5 fixed w-full flex justify-start items-center gap-5 pl-5 text-surface-25 font-semibold z-10 top-0;
   backdrop-filter: blur(8px);
   background: rgba(8, 12, 32, 0.55);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);

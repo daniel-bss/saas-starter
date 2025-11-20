@@ -42,40 +42,40 @@ const dummyAlliances: AllianceCarouselItem[] = [
 ];
 
 export default function Page() {
-  let [firstLanding, setFirstLanding] = useState<boolean>(true);
+  let [firstLanding, setFirstLanding] = useState<boolean>(false);
 
   return (
     <>
       {/* FIRST LANDING */}
-      {!firstLanding && (
+      {firstLanding ? (
         <GateOverlay
           firstLanding={firstLanding}
           setFirstLanding={setFirstLanding}
         />
-      )}
-
-      {/* HOME */}
-      <div className="container pt-[90px] h-[3000px] flex flex-col justify-start items-center">
-        <div className="font-bold text-3xl text-surface-25 tracking-wider">
-          WOS STATE #2128
-        </div>
-
-        <div className="text-secondary font-bold mt-4 mb-4">
-          Hub for alliance news, lore, guides, and strategy. Collaborators: add
-          anything you like, from stories to tips
-        </div>
-
-        {/* ALLIANCES */}
-        <div className="card w-full flex flex-col justify-start items-start">
-          <div className="text-surface-25 text-xl font-bold mb-8">
-            Alliances
+      ) : (
+        <div className="container pt-[90px] h-[3000px] flex flex-col justify-start items-center">
+          {/* HOME */}
+          <div className="font-bold text-[26px] text-surface-25 tracking-wide">
+            WOS STATE #2128
           </div>
 
-          <AlliancesCarousel items={dummyAlliances} />
-        </div>
+          <div className="text-secondary font-bold mt-4 mb-4">
+            Hub for alliance news, lore, guides, and strategy. Collaborators:
+            add anything you like, from stories to tips
+          </div>
 
-        {/* NEWS & BATTLE UPDATES */}
-      </div>
+          {/* ALLIANCES */}
+          <div className="card w-full flex flex-col justify-start items-start">
+            <div className="text-surface-25 text-xl font-bold mb-4">
+              Alliances
+            </div>
+
+            <AlliancesCarousel items={dummyAlliances} />
+          </div>
+
+          {/* NEWS & BATTLE UPDATES */}
+        </div>
+      )}
     </>
   );
 }

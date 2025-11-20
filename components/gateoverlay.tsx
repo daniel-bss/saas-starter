@@ -15,7 +15,7 @@ export default function GateOverlay({
       // router.push(Endpoint.topSecret);
       // TODO: TOP SECRET FOR ETF
     }
-    setFirstLanding(true);
+    setFirstLanding(false);
   };
 
   return (

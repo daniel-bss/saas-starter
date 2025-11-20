@@ -13,7 +13,7 @@ const links: {
 
 export default function Navbar() {
   return (
-    <div className="navbar flex justify-start items-center gap-5 pl-5 text-surface-25 font-semibold">
+    <div className="navbar">
       {/* TODO: #2128, large size  */}
 
       {links.map((l) => (
