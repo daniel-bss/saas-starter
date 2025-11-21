@@ -5,7 +5,6 @@ import type { Metadata, Viewport } from "next";
 import { SWRConfig } from "swr";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
-// import Footer from "@/components/footeR";
 
 export const metadata: Metadata = {
   title: "abc",
