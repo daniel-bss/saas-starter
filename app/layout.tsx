@@ -21,7 +21,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.className} bg-primary`}>
+    <html lang="en" className={`${inter.className}`}>
       <body className="body-main-background">
         <SWRConfig
           value={{
@@ -33,9 +33,7 @@ export default function RootLayout({
             },
           }}
         >
-          <Navbar />
           {children}
-          <Footer />
         </SWRConfig>
       </body>
     </html>

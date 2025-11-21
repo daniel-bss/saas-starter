@@ -4,7 +4,7 @@ import AlliancesCarousel from "@/components/alliances-carousel";
 import GateOverlay from "@/components/gateoverlay";
 import { formatDate } from "@/lib/date";
 import { AllianceCarouselItem, NewsItem } from "@/types";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const dummyAlliances: AllianceCarouselItem[] = [
   {
@@ -66,7 +66,7 @@ const dummyNews: NewsItem[] = [
 ];
 
 export default function Page() {
-  let [firstLanding, setFirstLanding] = useState<boolean>(true);
+  let [firstLanding, setFirstLanding] = useState<boolean>(false);
 
   return (
     <>
