@@ -66,7 +66,7 @@ const dummyNews: NewsItem[] = [
 ];
 
 export default function Page() {
-  let [firstLanding, setFirstLanding] = useState<boolean>(false);
+  let [firstLanding, setFirstLanding] = useState<boolean>(true);
 
   return (
     <>

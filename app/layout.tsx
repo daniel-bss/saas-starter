@@ -4,6 +4,8 @@ import type { Metadata, Viewport } from "next";
 // import { getUser, getTeamForUser } from '@/lib/db/queries';
 import { SWRConfig } from "swr";
 import Navbar from "@/components/navbar";
+import Footer from "@/components/footer";
+// import Footer from "@/components/footeR";
 
 export const metadata: Metadata = {
   title: "abc",
@@ -21,7 +23,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.className} bg-primary`}>
-      <body className="min-h-[100dvh] pb-[100px] body-main-background">
+      <body className="min-h-[100dvh] body-main-background">
         <SWRConfig
           value={{
             fallback: {
@@ -34,6 +36,7 @@ export default function RootLayout({
         >
           <Navbar />
           {children}
+          <Footer />
         </SWRConfig>
       </body>
     </html>
