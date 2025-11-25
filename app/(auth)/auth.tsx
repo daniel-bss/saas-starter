@@ -6,7 +6,7 @@ import { useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { CircleIcon, Loader2 } from "lucide-react";
+import { Loader2 } from "lucide-react";
 
 import { k_SIGNIN, k_SIGNUP, signInAction, signUpAction } from "./actions";
 import { ActionState } from "@/lib/auth/actions";
@@ -28,7 +28,8 @@ export function Auth({
       <div className="px-10 pt-24 pb-20 w-[500px] rounded-3xl bg-gray-100">
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
           <h2 className="text-center text-3xl font-extrabold text-gray-700 select-none">
-            {mode === k_SIGNIN ? "Welcome home, Master..." : "Register"}
+            {/* {mode === k_SIGNIN ? "Welcome home, Master..." : "Register"} */}
+            {mode === k_SIGNIN ? "x" : "Register"}
           </h2>
         </div>
 

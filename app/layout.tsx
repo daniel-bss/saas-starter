@@ -1,10 +1,9 @@
-import { inter } from "@/components/ui/fonts";
+import { globalFont } from "@/components/ui/fonts";
 import "./globals.css";
+
 import type { Metadata, Viewport } from "next";
 // import { getUser, getTeamForUser } from '@/lib/db/queries';
 import { SWRConfig } from "swr";
-import Navbar from "@/components/navbar";
-import Footer from "@/components/footer";
 
 export const metadata: Metadata = {
   title: "abc",
@@ -21,7 +20,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.className}`}>
+    <html lang="en" className={`${globalFont.className}`}>
       <body className="body-main-background">
         <SWRConfig
           value={{

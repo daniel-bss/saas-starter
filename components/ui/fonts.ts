@@ -1,3 +1,7 @@
-import { Inter } from "next/font/google";
+import { Poppins } from "next/font/google";
 
-export const inter = Inter({ subsets: ["latin"] });
+export const globalFont = Poppins({ weight: "400", subsets: ["latin"] });
+
+// export const lf = localFont({
+//   src: "../../public/fonts/<font>.ttf",
+// });
