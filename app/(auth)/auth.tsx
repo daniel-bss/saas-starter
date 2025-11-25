@@ -25,14 +25,16 @@ export function Auth({
 
   return (
     <div className="min-h-[100dvh] flex flex-col justify-center items-center py-12 px-4 sm:px-6 lg:px-8 pb-[100px]">
-      <div className="px-10 pt-24 pb-20 w-[500px] rounded-3xl bg-gray-100">
+      {/* <div className="px-10 pt-24 pb-20 w-[500px] rounded-3xl bg-gray-100"> TODO: ADJUST IN MAC */}
+      <div className="px-10 pt-12 pb-10 w-[400px] rounded-3xl bg-gray-100">
+        {/* 1280 x 632 */}
+
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
           <h2 className="text-center text-3xl font-extrabold text-gray-700 select-none">
             {/* {mode === k_SIGNIN ? "Welcome home, Master..." : "Register"} */}
             {mode === k_SIGNIN ? "x" : "Register"}
           </h2>
         </div>
-
         <div className="mt-14 sm:mx-auto sm:w-full sm:max-w-md">
           <form className="space-y-6" action={formAction}>
             <input type="hidden" name="redirect" value={redirect || ""} />
