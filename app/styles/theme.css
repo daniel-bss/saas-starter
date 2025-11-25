@@ -4,6 +4,7 @@
   --color-primary-200: #060a1b;
 
   --color-secondary: #b9c3ff;
+  --color-secondary-100: #8892ce;
 
   --color-surface-25: #f2f3f4;
   --color-surface-50: #e5e7eb;
@@ -29,6 +30,7 @@
 
 .gate-overlay {
   background: radial-gradient(circle at top, #111827 0, #020617 55%, #000 100%);
+  /* background-color: #8892ce; */
 }
 
 .container {

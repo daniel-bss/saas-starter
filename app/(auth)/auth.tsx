@@ -24,93 +24,89 @@ export function Auth({
   );
 
   return (
-    <div className="min-h-[100dvh] flex flex-col justify-center py-12 px-4 sm:px-6 lg:px-8 bg-gray-50">
-      <div className="bg-green-200">TEST</div>
-      <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="flex justify-center">
-          <CircleIcon className="h-12 w-12 text-orange-500" />
+    <div className="min-h-[100dvh] flex flex-col justify-center items-center py-12 px-4 sm:px-6 lg:px-8 pb-[100px]">
+      <div className="px-10 pt-24 pb-20 w-[500px] rounded-3xl bg-gray-100">
+        <div className="sm:mx-auto sm:w-full sm:max-w-md">
+          <h2 className="text-center text-3xl font-extrabold text-gray-700 select-none">
+            {mode === k_SIGNIN ? "Welcome home, Master..." : "Register"}
+          </h2>
         </div>
-        <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-          {mode === k_SIGNIN
-            ? "Sign in to your account"
-            : "Create your account"}
-        </h2>
-      </div>
 
-      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <form className="space-y-6" action={formAction}>
-          <input type="hidden" name="redirect" value={redirect || ""} />
-          <div>
-            <Label
-              htmlFor="username"
-              className="block text-sm font-medium text-gray-700"
-            >
-              Username
-            </Label>
-            <div className="mt-1">
-              <Input
-                id="username"
-                name="username"
-                type="text"
-                defaultValue={state.username}
-                required
-                maxLength={50}
-                className="appearance-none rounded-full relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-orange-500 focus:border-orange-500 focus:z-10 sm:text-sm"
-                placeholder="Username"
-              />
+        <div className="mt-14 sm:mx-auto sm:w-full sm:max-w-md">
+          <form className="space-y-6" action={formAction}>
+            <input type="hidden" name="redirect" value={redirect || ""} />
+            <div>
+              <Label
+                htmlFor="username"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Username
+              </Label>
+              <div className="mt-1">
+                <Input
+                  id="username"
+                  name="username"
+                  type="text"
+                  defaultValue={state.username}
+                  required
+                  maxLength={50}
+                  className="appearance-none rounded-full relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:z-10 sm:text-sm"
+                  placeholder="Enter your username"
+                />
+              </div>
             </div>
-          </div>
 
-          <div>
-            <Label
-              htmlFor="password"
-              className="block text-sm font-medium text-gray-700"
-            >
-              Password
-            </Label>
-            <div className="mt-1">
-              <Input
-                id="password"
-                name="password"
-                type="password"
-                // autoComplete={
-                //   mode === k_SIGNIN ? "current-password" : "new-password"
-                // }
-                defaultValue={state.password}
-                required
-                minLength={8}
-                maxLength={100}
-                className="appearance-none rounded-full relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-orange-500 focus:border-orange-500 focus:z-10 sm:text-sm"
-                placeholder="Enter your password"
-              />
+            <div>
+              <Label
+                htmlFor="password"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Password
+              </Label>
+              <div className="mt-1">
+                <Input
+                  id="password"
+                  name="password"
+                  type="password"
+                  // autoComplete={
+                  //   mode === k_SIGNIN ? "current-password" : "new-password"
+                  // }
+                  defaultValue={state.password}
+                  required
+                  minLength={8}
+                  maxLength={100}
+                  className="appearance-none rounded-full relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:z-10 sm:text-sm"
+                  placeholder="Enter your password"
+                />
+              </div>
             </div>
-          </div>
 
-          {state?.error && (
-            <div className="text-red-500 text-sm">{state.error}</div>
-          )}
+            {state?.error && (
+              <div className="text-red-500 text-sm">{state.error}</div>
+            )}
 
-          <div>
-            <Button
-              type="submit"
-              className="w-full flex justify-center items-center py-2 px-4 border border-transparent rounded-full shadow-sm text-sm font-medium text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
-              disabled={pending}
-            >
-              {pending ? (
-                <>
-                  <Loader2 className="animate-spin mr-2 h-4 w-4" />
-                  Loading...
-                </>
-              ) : mode === k_SIGNIN ? (
-                "Sign In"
-              ) : (
-                "Sign Up"
-              )}
-            </Button>
-          </div>
-        </form>
+            <div>
+              <Button
+                type="submit"
+                className="w-full mt-12 flex justify-center items-center py-5 px-4 border border-transparent rounded-full shadow-sm font-medium text-lg text-white bg-secondary hover:bg-secondary-100 hover:cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2"
+                disabled={pending}
+              >
+                {pending ? (
+                  <>
+                    <Loader2 className="animate-spin mr-2 h-4 w-4" />
+                    Loading...
+                  </>
+                ) : mode === k_SIGNIN ? (
+                  "Sign In"
+                ) : (
+                  "Sign Up"
+                )}
+              </Button>
+            </div>
+          </form>
 
-        <div className="mt-6">
+          {/* New to our platform? */}
+          {/* <div className="mt-6">
           <div className="relative">
             <div className="absolute inset-0 flex items-center">
               <div className="w-full border-t border-gray-300" />
@@ -133,7 +129,8 @@ export function Auth({
                 ? "Create an account"
                 : "Sign in to existing account"}
             </Link>
-          </div>
+          </div> 
+        </div> */}
         </div>
       </div>
     </div>
