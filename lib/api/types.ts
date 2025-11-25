@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { ErrorCode } from "../errors/codes";
 
 export const signInSchema = z.object({
   username: z.string().min(3).max(255), // TODO: validasi dengan rules BE
@@ -17,7 +18,7 @@ export type BaseResponse<T> = {
   data?: T;
   error?: {
     code: string;
-    message: string;
+    message: string | ErrorCode;
   };
 };
 

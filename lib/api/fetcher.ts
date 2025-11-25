@@ -20,14 +20,6 @@ async function fetcher<T>(endpoint: string, options?: RequestInit): Promise<T> {
     cache: "no-store", // optional, makes it always fresh
   });
 
-  if (!res.ok) {
-    console.log("KACAOO");
-    // throw new Error(`API error: ${res.status}`);
-  }
-
-  console.log(res);
-  console.log("MASOK");
-
   return res.json() as Promise<T>;
 }
 
