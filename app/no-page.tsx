@@ -15,4 +15,6 @@ TODO: JWT or session
 TODO: gtag (Google Manager)
 
 TODO: /lib/api/ to define "fetcher.ts"
+
+using cookies for tracking
 */
