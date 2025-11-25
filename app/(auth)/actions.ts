@@ -3,6 +3,8 @@ import { validatedAction } from "@/lib/auth/actions";
 import { redirect } from "next/navigation";
 import { signIn } from "@/lib/api/fetcher";
 import { signInSchema, signUpSchema } from "@/lib/api/types";
+import { error } from "console";
+import { ERROR_MESSAGES } from "@/lib/errors/messages";
 
 export const k_SIGNIN = "signin";
 export const k_SIGNUP = "signup";
@@ -11,17 +13,24 @@ export const signInAction = validatedAction(
   signInSchema,
   async (data, formData) => {
     const res = await signIn(data);
-    console.log("DONEEE");
-    console.log(res);
 
-    // TODO:
-    // res.
+    if (res.error) {
+      return {
+        error: ERROR_MESSAGES[res.error.message],
+        username: data.username,
+        password: data.password,
+      };
+    }
 
-    // return {
-    //   username: "haha@asda.com",
-    //   password: "lslslslslsl",
-    // };
-    console.log("HOAHWOWAKOAKW");
+    if (res.data) {
+      // return {
+      //   username: data.username,
+      //   password: data.password,
+      // };
+      // TODO: SET COOKIES
+    }
+
+    redirect("/admin");
 
     //   console.log(object);
 

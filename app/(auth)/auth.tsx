@@ -85,13 +85,15 @@ export function Auth({
             </div>
 
             {state?.error && (
-              <div className="text-red-500 text-sm">{state.error}</div>
+              <div className="absolute mt-[-12px] truncate text-red-500 text-sm max-w-[320px]">
+                {state.error}
+              </div>
             )}
 
             <div>
               <Button
                 type="submit"
-                className="w-full mt-12 flex justify-center items-center py-5 px-4 border border-transparent rounded-full shadow-sm font-medium text-lg text-white bg-secondary hover:bg-secondary-100 hover:cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2"
+                className="w-full select-none mt-12 flex justify-center items-center py-5 px-4 border border-transparent rounded-full shadow-sm font-medium text-lg text-white bg-secondary hover:bg-secondary-100 hover:cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2"
                 disabled={pending}
               >
                 {pending ? (
