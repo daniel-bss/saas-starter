@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useActionState } from "react";
+import { useActionState, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -27,7 +27,7 @@ export function Auth({
     <div className="min-h-[100dvh] flex flex-col justify-center items-center py-12 px-4 sm:px-6 lg:px-8 pb-[100px]">
       {/* <div className="px-10 pt-24 pb-20 w-[500px] rounded-3xl bg-gray-100"> TODO: ADJUST IN MAC */}
       <div className="px-10 pt-12 pb-10 w-[400px] rounded-3xl bg-gray-100">
-        {/* 1280 x 632 */}
+        {/* TODO: 1280 x 632 */}
 
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
           <h2 className="text-center text-3xl font-extrabold text-gray-700 select-none">
@@ -93,7 +93,7 @@ export function Auth({
             <div>
               <Button
                 type="submit"
-                className="w-full select-none mt-12 flex justify-center items-center py-5 px-4 border border-transparent rounded-full shadow-sm font-medium text-lg text-white bg-secondary hover:bg-secondary-100 hover:cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2"
+                className="w-full select-none mt-12 flex justify-center items-center py-5 px-4 border border-transparent rounded-full shadow-sm font-medium text-lg text-white bg-secondary hover:bg-secondary-100  disabled:cursor-default hover:cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2"
                 disabled={pending}
               >
                 {pending ? (

@@ -3,6 +3,8 @@ import { z } from "zod";
 export type ActionState = {
   error?: string;
   // success?: string;
+  username?: string;
+  password?: string;
   [key: string]: any; // This allows for additional properties
 };
 
@@ -19,7 +21,9 @@ export function validatedAction<S extends z.ZodType<any, any>, T>(
     const result = schema.safeParse(Object.fromEntries(formData));
     if (!result.success) {
       const error = result.error;
-      return { error: error.errors[0].message };
+      const msg = error.errors[0].message;
+      console.log(error);
+      return { error: "Invalid credentials" };
     }
 
     return action(result.data, formData);

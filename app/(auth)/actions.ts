@@ -27,7 +27,11 @@ export const signInAction = validatedAction(
       //   username: data.username,
       //   password: data.password,
       // };
+
       // TODO: SET COOKIES
+
+      console.log("OKOKOK");
+      console.log(res.data.access_token);
     }
 
     redirect("/admin");

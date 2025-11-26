@@ -5,6 +5,8 @@ export const signInSchema = z.object({
   username: z.string().min(3).max(255), // TODO: validasi dengan rules BE
   password: z.string().min(8).max(100),
 });
+// TODO: sign in gak usah ada error message (return Invalid Credentials aja)
+// wording fokus di register aja
 
 export const signUpSchema = z.object({
   // email: z.string().email(),
