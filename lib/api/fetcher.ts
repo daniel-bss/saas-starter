@@ -1,7 +1,7 @@
 // import { API_BASE_URL } from "./config";
 
 import z from "zod";
-import { BaseResponse, SignInResponse, signInSchema } from "./types";
+import { BaseResponse, SignInResponse, signInSchema } from "../types/types";
 
 const k_GET = "GET";
 const k_POST = "POST";

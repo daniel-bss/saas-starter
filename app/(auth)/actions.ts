@@ -2,9 +2,11 @@ import { z } from "zod";
 import { validatedAction } from "@/lib/auth/actions";
 import { redirect } from "next/navigation";
 import { signIn } from "@/lib/api/fetcher";
-import { signInSchema, signUpSchema } from "@/lib/api/types";
+import { signInSchema, signUpSchema } from "@/lib/types/types";
 import { error } from "console";
 import { ERROR_MESSAGES } from "@/lib/errors/messages";
+import { setSession } from "@/lib/auth/session";
+import { User } from "@/lib/types/user";
 
 export const k_SIGNIN = "signin";
 export const k_SIGNUP = "signup";
@@ -30,8 +32,14 @@ export const signInAction = validatedAction(
 
       // TODO: SET COOKIES
 
-      console.log("OKOKOK");
-      console.log(res.data.access_token);
+      console.log(res.data);
+      const user: User = {
+        full_name: res.data.user.full_name,
+        username: res.data.user.username,
+      };
+      await Promise.all([
+        setSession(user, res.data.access_token, res.data.refresh_token),
+      ]);
     }
 
     redirect("/admin");
@@ -76,7 +84,7 @@ export const signInAction = validatedAction(
     //   await Promise.all([
     //     setSession(foundUser),
     //     logActivity(foundTeam?.id, foundUser.id, ActivityType.SIGN_IN),
-    //   ]);
+    //]);
 
     // TODO:
     //   const redirectTo = formData.get("redirect") as string | null;

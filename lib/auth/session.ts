@@ -1,7 +1,9 @@
-import { compare, hash } from 'bcryptjs';
-import { SignJWT, jwtVerify } from 'jose';
-import { cookies } from 'next/headers';
-import { NewUser } from '@/lib/db/schema';
+import { compare, hash } from "bcryptjs";
+import { SignJWT, jwtVerify } from "jose";
+import { cookies } from "next/headers";
+import { NewUser } from "@/lib/db/schema";
+import { User } from "../types/user";
+import { ResponseCookie } from "next/dist/compiled/@edge-runtime/cookies";
 
 const key = new TextEncoder().encode(process.env.AUTH_SECRET);
 const SALT_ROUNDS = 10;
@@ -24,36 +26,53 @@ type SessionData = {
 
 export async function signToken(payload: SessionData) {
   return await new SignJWT(payload)
-    .setProtectedHeader({ alg: 'HS256' })
+    .setProtectedHeader({ alg: "HS256" })
     .setIssuedAt()
-    .setExpirationTime('1 day from now')
+    .setExpirationTime("1 day from now")
     .sign(key);
 }
 
 export async function verifyToken(input: string) {
   const { payload } = await jwtVerify(input, key, {
-    algorithms: ['HS256'],
+    algorithms: ["HS256"],
   });
   return payload as SessionData;
 }
 
 export async function getSession() {
-  const session = (await cookies()).get('session')?.value;
+  const session = (await cookies()).get("session")?.value;
   if (!session) return null;
   return await verifyToken(session);
 }
 
-export async function setSession(user: NewUser) {
-  const expiresInOneDay = new Date(Date.now() + 24 * 60 * 60 * 1000);
-  const session: SessionData = {
-    user: { id: user.id! },
-    expires: expiresInOneDay.toISOString(),
+// export async function setSession(user: NewUser) {
+//   const expiresInOneDay = new Date(Date.now() + 24 * 60 * 60 * 1000);
+//   const session: SessionData = {
+//     user: { id: user.id! },
+//     expires: expiresInOneDay.toISOString(),
+//   };
+//   const encryptedSession = await signToken(session);
+//   (await cookies()).set('session', encryptedSession);{
+//     expires: expiresInOneDay,
+//     httpOnly: true,
+//     secure: true,
+//     sameSite: 'lax',
+//   },
+// }
+
+export async function setSession(
+  user: User,
+  accessToken: string,
+  refreshToken: string
+) {
+  const config: Partial<ResponseCookie> = {
+    httpOnly: true, // cannot be accessed by JavaScript
+    secure: true, // HTTPS only
+    sameSite: "strict", // protects against CSRF
+    path: "/", // cookie valid everywhere
+    maxAge: 60 * 60 * 24, // 1 day (example)
   };
-  const encryptedSession = await signToken(session);
-  (await cookies()).set('session', encryptedSession, {
-    expires: expiresInOneDay,
-    httpOnly: true,
-    secure: true,
-    sameSite: 'lax',
-  });
+  (await cookies()).set("accessToken", accessToken, config);
+  (await cookies()).set("refreshToken", refreshToken, config);
+  // TODO: user?
 }
