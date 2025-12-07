@@ -50,7 +50,8 @@ export function Auth({
                   id="username"
                   name="username"
                   type="text"
-                  defaultValue={state.username}
+                  defaultValue="admin"
+                  // defaultValue={state.username}
                   required
                   maxLength={50}
                   className="appearance-none rounded-full relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:z-10 sm:text-sm"
@@ -74,7 +75,8 @@ export function Auth({
                   // autoComplete={
                   //   mode === k_SIGNIN ? "current-password" : "new-password"
                   // }
-                  defaultValue={state.password}
+                  // defaultValue={state.password}
+                  defaultValue="Q!qwe123"
                   required
                   minLength={8}
                   maxLength={100}
