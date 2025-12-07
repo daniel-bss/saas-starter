@@ -7,6 +7,7 @@ import { error } from "console";
 import { ERROR_MESSAGES } from "@/lib/errors/messages";
 import { setSession } from "@/lib/auth/session";
 import { User } from "@/lib/types/user";
+import { fromTheme } from "tailwind-merge";
 
 export const k_SIGNIN = "signin";
 export const k_SIGNUP = "signup";
@@ -16,33 +17,35 @@ export const signInAction = validatedAction(
   async (data, formData) => {
     const res = await signIn(data);
 
-    if (res.error) {
-      return {
-        error: ERROR_MESSAGES[res.error.message],
-        username: data.username,
-        password: data.password,
-      };
-    }
+    console.log(res);
 
-    if (res.data) {
-      // return {
-      //   username: data.username,
-      //   password: data.password,
-      // };
+    // if (res.error) {
+    //   return {
+    //     error: ERROR_MESSAGES[res.error.message],
+    //     username: data.username,
+    //     password: data.password,
+    //   };
+    // }
 
-      // TODO: SET COOKIES
+    // if (res.data) {
+    //   // return {
+    //   //   username: data.username,
+    //   //   password: data.password,
+    //   // };
 
-      console.log(res.data);
-      const user: User = {
-        full_name: res.data.user.full_name,
-        username: res.data.user.username,
-      };
-      await Promise.all([
-        setSession(user, res.data.access_token, res.data.refresh_token),
-      ]);
-    }
+    //   // TODO: SET COOKIES
 
-    redirect("/admin");
+    //   console.log(res.data);
+    //   const user: User = {
+    //     full_name: res.data.user.full_name,
+    //     username: res.data.user.username,
+    //   };
+    //   await Promise.all([
+    //     setSession(user, res.data.access_token, res.data.refresh_token),
+    //   ]);
+    // }
+
+    // redirect("/admin");
 
     //   console.log(object);
 
