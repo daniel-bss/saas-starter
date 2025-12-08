@@ -6,7 +6,6 @@ import { refreshToken } from "./lib/api/fetcher";
 const protectedRoutes = "/admin";
 
 export async function proxy(request: NextRequest) {
-  console.log("\nMASOKOK");
   const { pathname } = request.nextUrl;
   const accessTokenCk = request.cookies.get("access_token");
   const refreshTokenCk = request.cookies.get("refresh_token");
@@ -14,19 +13,16 @@ export async function proxy(request: NextRequest) {
 
   let res = NextResponse.next();
 
-  if (isProtectedRoute) {
-    if (!accessTokenCk && !refreshTokenCk) {
-      return NextResponse.redirect(new URL("/signin", request.url));
-    }
+  // if (isProtectedRoute) {
+  //   if (!accessTokenCk && !refreshTokenCk) {
+  //     return NextResponse.redirect(new URL("/signin", request.url));
+  //   }
 
-    if (!accessTokenCk) {
-      const cookies = await refreshToken(refreshTokenCk!.value);
-      // const accessTokenCk = request.cookies.get("access_token");
-      // console.log("OKEH", res);
-
-      cookies.forEach((c) => res.headers.append("Set-Cookie", c));
-    }
-  }
+  //   if (!accessTokenCk) {
+  //     const cookies = await refreshToken(refreshTokenCk!.value);
+  //     cookies.forEach((c) => res.headers.append("Set-Cookie", c));
+  //   }
+  // }
 
   // TODO: block login if cookies exist
 
