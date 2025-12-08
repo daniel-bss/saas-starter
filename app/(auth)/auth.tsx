@@ -50,10 +50,10 @@ export function Auth({
                   id="username"
                   name="username"
                   type="text"
-                  defaultValue="admin"
                   // defaultValue={state.username}
+                  autoComplete="off"
                   required
-                  maxLength={50}
+                  maxLength={32}
                   className="appearance-none rounded-full relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:z-10 sm:text-sm"
                   placeholder="Enter your username"
                 />
@@ -76,10 +76,8 @@ export function Auth({
                   //   mode === k_SIGNIN ? "current-password" : "new-password"
                   // }
                   // defaultValue={state.password}
-                  defaultValue="Q!qwe123"
                   required
-                  minLength={8}
-                  maxLength={100}
+                  maxLength={32}
                   className="appearance-none rounded-full relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:z-10 sm:text-sm"
                   placeholder="Enter your password"
                 />

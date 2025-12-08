@@ -1,44 +1,34 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { signToken, verifyToken } from "@/lib/auth/session";
+import { refreshToken } from "./lib/api/fetcher";
 
 const protectedRoutes = "/admin";
 
 export async function proxy(request: NextRequest) {
+  console.log("\nMASOKOK");
   const { pathname } = request.nextUrl;
-  const sessionCookie = request.cookies.get("session");
+  const accessTokenCk = request.cookies.get("access_token");
+  const refreshTokenCk = request.cookies.get("refresh_token");
   const isProtectedRoute = pathname.startsWith(protectedRoutes);
-
-  if (isProtectedRoute && !sessionCookie) {
-    return NextResponse.redirect(new URL("/signin", request.url));
-  }
 
   let res = NextResponse.next();
 
-  if (sessionCookie && request.method === "GET") {
-    try {
-      const parsed = await verifyToken(sessionCookie.value);
-      const expiresInOneDay = new Date(Date.now() + 24 * 60 * 60 * 1000);
+  if (isProtectedRoute) {
+    if (!accessTokenCk && !refreshTokenCk) {
+      return NextResponse.redirect(new URL("/signin", request.url));
+    }
 
-      res.cookies.set({
-        name: "session",
-        value: await signToken({
-          ...parsed,
-          expires: expiresInOneDay.toISOString(),
-        }),
-        httpOnly: true,
-        secure: true,
-        sameSite: "lax",
-        expires: expiresInOneDay,
-      });
-    } catch (error) {
-      console.error("Error updating session:", error);
-      res.cookies.delete("session");
-      if (isProtectedRoute) {
-        return NextResponse.redirect(new URL("/signin", request.url));
-      }
+    if (!accessTokenCk) {
+      const cookies = await refreshToken(refreshTokenCk!.value);
+      // const accessTokenCk = request.cookies.get("access_token");
+      // console.log("OKEH", res);
+
+      cookies.forEach((c) => res.headers.append("Set-Cookie", c));
     }
   }
+
+  // TODO: block login if cookies exist
 
   return res;
 }

@@ -18,8 +18,10 @@ async function fetcher<T>(endpoint: string, options?: RequestInit): Promise<T> {
       ...(options?.headers ?? {}),
     },
     credentials: "include",
-    cache: "no-store", // optional, makes it always fresh
+    cache: "no-store",
   });
+
+  console.log(">>", res.headers);
 
   return res.json() as Promise<T>;
 }
@@ -29,4 +31,25 @@ export async function signIn(b: z.infer<typeof signInSchema>) {
     method: k_POST,
     body: JSON.stringify(b),
   });
+}
+
+export async function refreshToken(token: string) {
+  const res = await fetch(`${API_BASE_URL}/renew-token`, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+    // credentials: "include",
+    // cache: "no-store",
+    body: JSON.stringify({
+      refresh_token: token,
+    }),
+    method: k_POST,
+  });
+
+  const cookies = res.headers.getSetCookie();
+  // cookies.forEach(c => )
+  console.log(">>", cookies);
+
+  // return res.json() as Promise<undefined>;
+  return cookies;
 }

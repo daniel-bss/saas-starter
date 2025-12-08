@@ -20,10 +20,10 @@ export function validatedAction<S extends z.ZodType<any, any>, T>(
   return async (prevState: ActionState, formData: FormData) => {
     const result = schema.safeParse(Object.fromEntries(formData));
     if (!result.success) {
-      const error = result.error;
-      const msg = error.errors[0].message;
-      console.log(error);
-      return { error: "Invalid credentials" };
+      // const error = result.error;
+      return {
+        error: "Invalid credentials",
+      };
     }
 
     return action(result.data, formData);

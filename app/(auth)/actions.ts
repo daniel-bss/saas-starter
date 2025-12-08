@@ -4,10 +4,10 @@ import { redirect } from "next/navigation";
 import { signIn } from "@/lib/api/fetcher";
 import { signInSchema, signUpSchema } from "@/lib/types/types";
 import { error } from "console";
-import { ERROR_MESSAGES } from "@/lib/errors/messages";
 import { setSession } from "@/lib/auth/session";
 import { User } from "@/lib/types/user";
 import { fromTheme } from "tailwind-merge";
+import { ERROR_MESSAGES } from "@/lib/errors/errmap";
 
 export const k_SIGNIN = "signin";
 export const k_SIGNUP = "signup";
@@ -19,84 +19,15 @@ export const signInAction = validatedAction(
 
     console.log(res);
 
-    // if (res.error) {
-    //   return {
-    //     error: ERROR_MESSAGES[res.error.message],
-    //     username: data.username,
-    //     password: data.password,
-    //   };
-    // }
+    if (res.message) {
+      return {
+        error: ERROR_MESSAGES[res.message],
+        username: data.username,
+        password: data.password,
+      };
+    }
 
-    // if (res.data) {
-    //   // return {
-    //   //   username: data.username,
-    //   //   password: data.password,
-    //   // };
-
-    //   // TODO: SET COOKIES
-
-    //   console.log(res.data);
-    //   const user: User = {
-    //     full_name: res.data.user.full_name,
-    //     username: res.data.user.username,
-    //   };
-    //   await Promise.all([
-    //     setSession(user, res.data.access_token, res.data.refresh_token),
-    //   ]);
-    // }
-
-    // redirect("/admin");
-
-    //   console.log(object);
-
-    //   const userWithTeam = await db
-    //     .select({
-    //       user: users,
-    //       team: teams,
-    //     })
-    //     .from(users)
-    //     .leftJoin(teamMembers, eq(users.id, teamMembers.userId))
-    //     .leftJoin(teams, eq(teamMembers.teamId, teams.id))
-    //     .where(eq(users.email, email))
-    //     .limit(1);
-
-    //   if (userWithTeam.length === 0) {
-    //     return {
-    //       error: "Invalid email or password. Please try again.",
-    //       email,
-    //       password,
-    //     };
-    //   }
-
-    //   const { user: foundUser, team: foundTeam } = userWithTeam[0];
-
-    //   const isPasswordValid = await comparePasswords(
-    //     password,
-    //     foundUser.passwordHash
-    //   );
-
-    //   if (!isPasswordValid) {
-    //     return {
-    //       error: "Invalid email or password. Please try again.",
-    //       email,
-    //       password,
-    //     };
-    //   }
-
-    // TODO??:
-    //   await Promise.all([
-    //     setSession(foundUser),
-    //     logActivity(foundTeam?.id, foundUser.id, ActivityType.SIGN_IN),
-    //]);
-
-    // TODO:
-    //   const redirectTo = formData.get("redirect") as string | null;
-    //   if (redirectTo === "checkout") {
-    //     const priceId = formData.get("priceId") as string;
-    //     return createCheckoutSession({ team: foundTeam, priceId });
-    //   }
-
-    //   redirect("/admin");
+    redirect("/admin");
   }
 );
 
