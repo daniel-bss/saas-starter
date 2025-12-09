@@ -38,6 +38,7 @@ import {
   DropdownMenuCheckboxItem,
 } from "@/components/ui/dropdown-menu";
 import { Checkbox } from "@/components/ui/checkbox";
+import BouncingDotsLoader from "@/components/loader";
 
 type Payment = z.infer<typeof PaymentSchema>;
 
@@ -445,7 +446,10 @@ export default function Page() {
         )}
       </div> */}
 
-      <div className="m-4 min-h-1/2 rounded-md bg-[#060915]">HEHE</div>
+      <div className="m-4 min-h-1/2 rounded-md bg-[#060915] py-2 px-3">
+        <p className="text-xl text-surface-25">News</p>
+        <BouncingDotsLoader />
+      </div>
     </div>
   );
 }
