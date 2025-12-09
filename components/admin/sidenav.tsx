@@ -31,8 +31,12 @@ export default function Sidenav() {
   const pathname = usePathname();
 
   return (
-    <div className="flex flex-col h-full bg-primary px-4">
-      <div className="flex flex-row justify-start items-center ml-3.5 gap-3 mt-6">
+    <div className="flex flex-col h-full bg-primary px-4 border-r-[1px] border-black">
+      {/* LOGO */}
+      <Link
+        href={"/admin"}
+        className="flex flex-row justify-start items-center ml-3.5 gap-3 mt-6"
+      >
         <Image src="/icons/favicon.svg" alt="" width={58} height={58} />
         <div className="flex flex-col justify-start items-center mb-1">
           <div className="text-xl text-white font-bold tracking-wider">
@@ -42,7 +46,7 @@ export default function Sidenav() {
             admin
           </span>
         </div>
-      </div>
+      </Link>
 
       <div className="h-[0.5px] bg-surface-200 my-7"></div>
 
@@ -53,7 +57,7 @@ export default function Sidenav() {
           className={clsx(
             "p-2 rounded-md mb-4 font-semibold pl-3 hover:border-surface-25",
             {
-              "bg-secondary text-primary hover:cursor-default":
+              "bg-secondary-100 text-primary hover:cursor-default":
                 pathname === `/admin${link.href}`,
             },
             {
@@ -65,7 +69,7 @@ export default function Sidenav() {
         </Link>
       ))}
 
-      {/* TODO: LOGOUT */}
+      {/* TODO: LOGOUT HERE OR NAVBAR ? */}
       {/* <div className="bg-red-200">asdasd</div>
       <div className="bg-red-200">asdasd</div>
       <div className="bg-red-200">asdasd</div> */}
