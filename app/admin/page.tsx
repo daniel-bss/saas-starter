@@ -1,3 +1,5 @@
+import { redirect } from "next/navigation";
+
 export default function Page() {
-  return <div className="text-green-50">NEWS</div>;
+  redirect("/admin/news");
 }

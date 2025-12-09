@@ -11,7 +11,7 @@ const links: {
 }[] = [
   {
     name: "News",
-    href: "",
+    href: "/news",
   },
   {
     name: "Alliances",
@@ -57,11 +57,12 @@ export default function Sidenav() {
           className={clsx(
             "p-2 rounded-md mb-4 font-semibold pl-3 hover:border-surface-25",
             {
-              "bg-secondary-100 text-primary hover:cursor-default":
-                pathname === `/admin${link.href}`,
+              "bg-secondary-100 text-primary": pathname.startsWith(
+                `/admin${link.href}`
+              ),
             },
             {
-              "text-surface-50": pathname !== `/admin${link.href}`,
+              "text-surface-50": !pathname.startsWith(`/admin${link.href}`),
             }
           )}
         >
