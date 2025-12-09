@@ -185,7 +185,7 @@ const data: Payment[] = [
 ];
 
 async function getData(): Promise<Payment[]> {
-  await new Promise((r) => setTimeout(r, 500));
+  await new Promise((r) => setTimeout(r, 100));
   return data;
 }
 
@@ -348,14 +348,16 @@ export function DataTable<TData, TValue>({
         </DropdownMenuContent>
       </DropdownMenu>
 
-      <div className="overflow-hidden rounded-md border">
+      <div className="overflow-hidden rounded-md text-white ">
+        {/* TODO: hide header, except checkbox */}
+        {/* TODO: move pagination on top, change to chevron */}
         <Table>
-          <TableHeader>
+          <TableHeader className="border-none">
             {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow key={headerGroup.id}>
+              <TableRow key={headerGroup.id} className="border-none">
                 {headerGroup.headers.map((header) => {
                   return (
-                    <TableHead key={header.id}>
+                    <TableHead key={header.id} className="text-surf">
                       {header.isPlaceholder
                         ? null
                         : flexRender(
@@ -374,6 +376,7 @@ export function DataTable<TData, TValue>({
                 <TableRow
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}
+                  className="border-none"
                 >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>
@@ -410,6 +413,7 @@ export function DataTable<TData, TValue>({
           size="sm"
           onClick={() => table.previousPage()}
           disabled={!table.getCanPreviousPage()}
+          className="cursor-pointer"
         >
           Previous
         </Button>
@@ -418,6 +422,7 @@ export function DataTable<TData, TValue>({
           size="sm"
           onClick={() => table.nextPage()}
           disabled={!table.getCanNextPage()}
+          className="cursor-pointer"
         >
           Next
         </Button>
@@ -438,17 +443,15 @@ export default function Page() {
 
   return (
     <div className="h-full">
-      {/* <div className="bg-red-50">
+      <div className="m-4 min-h-1/2 rounded-md bg-[#060915] py-3 px-4">
+        <p className="text-xl text-surface-25">News & Battle Updates</p>
+
+        {/* TODO: loading if data undefined, "No resulst" if data empty */}
         {!data.length ? (
-          <div>loading</div>
+          <BouncingDotsLoader />
         ) : (
           <DataTable columns={columns} data={data} />
         )}
-      </div> */}
-
-      <div className="m-4 min-h-1/2 rounded-md bg-[#060915] py-2 px-3">
-        <p className="text-xl text-surface-25">News</p>
-        <BouncingDotsLoader />
       </div>
     </div>
   );
