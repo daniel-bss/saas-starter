@@ -4,6 +4,7 @@ import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { Badge } from "../ui/badge";
 
 const links: {
   name: string;
@@ -31,7 +32,7 @@ export default function Sidenav() {
   const pathname = usePathname();
 
   return (
-    <div className="flex flex-col h-full bg-primary px-4 border-r-[1px] border-black">
+    <div className="fixed z1 flex flex-col h-full bg-primary px-4 border-r-[1px] border-black">
       {/* LOGO */}
       <Link
         href={"/admin"}
@@ -42,9 +43,9 @@ export default function Sidenav() {
           <div className="text-xl text-white font-bold tracking-wider">
             Havlabs
           </div>
-          <span className="bg-surface-25 rounded-full py-0.5 px-2 text-center font-bold text-xs">
+          <Badge variant="outline" className="bg-surface-25">
             admin
-          </span>
+          </Badge>
         </div>
       </Link>
 

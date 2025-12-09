@@ -71,3 +71,7 @@
   scrollbar-color: rgb(100, 100, 100) rgba(192, 192, 192, 0.08);
   scrollbar-width: thin;
 }
+
+.z1 {
+  z-index: 1;
+}

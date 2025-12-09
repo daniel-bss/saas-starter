@@ -13,7 +13,7 @@ export default function RootLayout({
         <Sidenav />
       </div>
       {/* <div className="grow p-6 md:overflow-y-auto md:p-12"> */}
-      <div className="grow overflow-y-auto">
+      <div className="w-full grow overflow-y-auto ml-[-20px]">
         <Navbar />
         {children}
       </div>
