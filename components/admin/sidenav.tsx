@@ -36,7 +36,7 @@ export default function Sidenav() {
       {/* LOGO */}
       <Link
         href={"/admin"}
-        className="flex flex-row justify-start items-center ml-3.5 gap-3 mt-6"
+        className="flex flex-row justify-center items-center gap-3  mt-6"
       >
         <Image src="/icons/favicon.svg" alt="" width={58} height={58} />
         <div className="flex flex-col justify-start items-center mb-1">

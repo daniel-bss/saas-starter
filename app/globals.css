@@ -270,3 +270,53 @@
     @apply bg-background text-foreground;
   }
 }
+
+.news-table [data-state="selected"] {
+  background: #3b4167 !important;
+}
+
+/*  */
+
+/*  */
+
+.news-table td {
+  border-top: 4px solid #0e1025 !important;
+  border-bottom: 4px solid #0e1025 !important;
+}
+
+.news-table [data-state="selected"] td {
+  border-top: 4px solid #0e1025 !important;
+  border-bottom: 4px solid #0e1025 !important;
+}
+
+/*  */
+
+.news-table td:first-child {
+  border-top-left-radius: 10px !important;
+  border-bottom-left-radius: 10px !important;
+}
+
+.news-table td:last-child {
+  border-top-right-radius: 10px !important;
+  border-bottom-right-radius: 10px !important;
+}
+
+.news-table [data-state="selected"] td:first-child {
+  border-top-left-radius: 10px !important;
+  border-bottom-left-radius: 10px !important;
+}
+
+.news-table [data-state="selected"] td:last-child {
+  border-top-right-radius: 10px !important;
+  border-bottom-right-radius: 10px !important;
+}
+
+/*  */
+
+.news-table td:first-child {
+  padding: 30px 0px !important;
+}
+
+.news-table td:last-child {
+  padding: 30px 0px !important;
+}

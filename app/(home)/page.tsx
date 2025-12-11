@@ -2,7 +2,7 @@
 
 import AlliancesCarousel from "@/components/alliances-carousel";
 import GateOverlay from "@/components/gateoverlay";
-import { formatDate } from "@/lib/date";
+import { formatDateWithSlash } from "@/lib/date";
 import { AllianceCarouselItem, NewsItem } from "@/types";
 import { useEffect, useState } from "react";
 
@@ -119,7 +119,7 @@ export default function Page() {
                   </div>
 
                   <div className="text-secondary text-xs mb-3">
-                    {formatDate(newsItem.date)}
+                    {formatDateWithSlash(newsItem.date)}
                   </div>
 
                   <div className="news-body">{newsItem.body}</div>

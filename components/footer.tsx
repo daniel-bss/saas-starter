@@ -8,7 +8,7 @@ export default function Footer() {
         </a>
       </span>{" "}
       & <span className="hover:cursor-pointer">DanielNiels</span>, at{" "}
-      <span className="font-bold text-[17px]">HAV</span>·{" "}
+      <span className="font-bold text-[17px]">HAV</span> ·{" "}
       <span className="underline">
         <a href="https://state2128.github.io/wos/" target="_blank">
           Legacy site
